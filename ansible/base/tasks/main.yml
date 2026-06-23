@@ -1,0 +1,14 @@
+# roles/base/tasks/main.yml
+- name: Update system
+  apt:
+    update_cache: yes
+    upgrade: dist
+
+- name: Install essential packages
+  apt:
+    name:
+      - vim
+      - curl
+      - ufw
+      - nginx
+    state: present
