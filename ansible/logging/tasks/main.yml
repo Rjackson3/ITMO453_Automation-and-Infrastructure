@@ -1,0 +1,11 @@
+# roles/logging/tasks/main.yml
+- name: Install rsyslog
+  apt:
+    name: rsyslog
+    state: present
+
+- name: Ensure logging service enabled
+  service:
+    name: rsyslog
+    state: started
+    enabled: yes
