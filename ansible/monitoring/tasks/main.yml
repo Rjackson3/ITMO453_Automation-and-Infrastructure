@@ -1,0 +1,10 @@
+# roles/monitoring/tasks/main.yml
+- name: Install htop
+  apt:
+    name: htop
+    state: present
+
+- name: Install net-tools
+  apt:
+    name: net-tools
+    state: present
