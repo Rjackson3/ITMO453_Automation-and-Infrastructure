@@ -1,0 +1,11 @@
+# roles/web/tasks/main.yml
+- name: Deploy landing page
+  copy:
+    src: ../../templates/index.html
+    dest: /var/www/html/index.html
+
+- name: Ensure nginx running
+  service:
+    name: nginx
+    state: started
+    enabled: yes
