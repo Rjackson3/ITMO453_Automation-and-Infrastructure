@@ -1,0 +1,19 @@
+groups:
+- name: system_alerts
+  rules:
+
+  - alert: HighCPUUsage
+    expr: 100 - (avg by(instance) (irate(node_cpu_seconds_total{mode="idle"}[1m])) * 100) > 80
+    for: 1m
+    labels:
+      severity: warning
+    annotations:
+      summary: "CPU usage is above 80%"
+
+  - alert: LowDiskSpace
+    expr: node_filesystem_free_bytes / node_filesystem_size_bytes < 0.10
+    for: 1m
+    labels:
+      severity: critical
+    annotations:
+      summary: "Less than 10% disk space remaining"
